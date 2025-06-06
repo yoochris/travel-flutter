@@ -37,6 +37,7 @@ dependencies:
   firebase_messaging: ^15.2.4
   geolocator: ^13.0.3
   mockito: ^5.4.4
+  flutter_staggered_grid_view: ^0.7.0
 
 dev_dependencies:
   flutter_test:
@@ -60,7 +61,17 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/actingweb-header-small.png
+    - assets/images/material/01.png
+    - assets/images/material/02.png
+    - assets/images/material/03.png
+    - assets/images/material/04.png
+    - assets/images/material/05.png
+    - assets/images/material/06.png
+    - assets/images/material/07.png
+    - assets/images/material/08.png
+    - assets/images/material/09.png
+    - assets/images/material/10.png
+    - assets/images/material/11.png
   fonts:
     - family: Nunito
       fonts:

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:first_app/l10n/app_localizations.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:first_app/models/appstate.dart';
@@ -12,25 +12,25 @@ import 'package:first_app/ui/theme/style.dart';
 
 // Using async functions must be done from an async function
 Future<Widget> getApp({bool mock = false, bool web = false}) async {
-  var analytics = FirebaseAnalytics.instance;
+  // var analytics = FirebaseAnalytics.instance;
   // Wrap a StatelessWidget (ProviderApp) in a ChangeNotifierProvider to trigger rebuild of the
   // entire MaterialApp when app state, like locale, changes
   return ChangeNotifierProvider.value(
       value: AppStateModel(
           prefs: await SharedPreferences.getInstance(),
-          analytics: analytics,
-          messaging: FirebaseMessaging.instance,
+          // analytics: analytics,
+          // messaging: FirebaseMessaging.instance,
           mock: mock,
           web: web),
-      child: ProviderApp(analytics: analytics));
+      child: ProviderApp());
 }
 
 class ProviderApp extends StatelessWidget {
-  final FirebaseAnalytics analytics;
+  // final FirebaseAnalytics analytics;
 
   const ProviderApp({
     super.key,
-    required this.analytics,
+    // required this.analytics,
   });
 
   @override
@@ -41,9 +41,9 @@ class ProviderApp extends StatelessWidget {
       // MaterialApp to restore the navigation stack when a user leaves and
       // returns to the app after it has been killed while running in the
       // background.
-      restorationScopeId: 'first_app',
+      restorationScopeId: 'travel-flutter',
       navigatorObservers: [
-        FirebaseAnalyticsObserver(analytics: analytics),
+        // FirebaseAnalyticsObserver(analytics: analytics),
       ],
       onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
