@@ -22,6 +22,7 @@ class LoginPage extends StatelessWidget {
       'assets/images/material/09.png',
       'assets/images/material/10.png',
       'assets/images/material/11.png',
+      'assets/images/material/01.png',
     ];
 
     List<List<String>> splitIntoColumns(
