@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:first_app/models/appstate.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:first_app/ui/theme/style.dart';
+import 'package:animate_do/animate_do.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -40,28 +40,9 @@ class LoginPage extends StatelessWidget {
       body: Container(
         // color: Colors.green,
         width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.only(left: 16, right: 16),
         child: Stack(
           children: [
-            // MasonryGridView.count(
-            //   itemCount: pictures.length,
-            //   crossAxisCount: 3,
-            //   mainAxisSpacing: 10,
-            //   crossAxisSpacing: 10,
-            //   itemBuilder: (context, index) {
-            //     return Container(
-            //       height: (index % 5 + 1) * 50,
-            //       clipBehavior: Clip.hardEdge,
-            //       decoration: BoxDecoration(
-            //           color: Colors.grey[50],
-            //           borderRadius: BorderRadius.all(Radius.circular(10))),
-            //       child: Image.asset(
-            //         pictures[index],
-            //         fit: BoxFit.cover,
-            //       ),
-            //     );
-            //   },
-            // ),
             Row(
               spacing: 10,
               children: List.generate(3, (i) {
@@ -99,58 +80,77 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        height: 300,
-                        color: AppColors.primaryBackground,
-                        width: double.infinity,
-                        child: Column(
-                          children: [
-                            Text(
-                              "Welcome to ChrisTravel",
-                              style: Theme.of(context).textTheme.displayLarge,
-                            ),
-                            Text(
-                              "Need a weekend recharge or a month-long expedition?",
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                            Text(
-                              "The world missed you!",
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 24),
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                      style: AppButtonStyles.defaultStyle,
-                                      onPressed: () {},
-                                      child: Text("Sign up"),
-                                    ),
-                                  ),
-                                  SizedBox(height: 16),
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                      style: AppButtonStyles.lightStyle,
-                                      onPressed: () {},
-                                      child: Text("Log in"),
-                                    ),
-                                  ),
-                                  SizedBox(height: 16),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                          height: 300,
+                          color: AppColors.primaryBackground,
+                          width: double.infinity),
                     ],
+                  ),
+                )),
+            Positioned(
+              top: 540,
+              left: 0,
+              right: 0,
+              child: FadeInUp(
+                duration: Duration(milliseconds: 1200),
+                child: Text(
+                  "Welcome to ChrisTravel",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.displayLarge,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 580,
+              left: 0,
+              right: 0,
+              child: FadeInUp(
+                  duration: Duration(milliseconds: 1200),
+                  child: Text(
+                    "Need a weekend recharge or a month-long expedition?",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  )),
+            ),
+            Positioned(
+              top: 620,
+              left: 0,
+              right: 0,
+              child: FadeInUp(
+                  duration: Duration(milliseconds: 1200),
+                  child: Text(
+                    "The world missed you!",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  )),
+            ),
+            Positioned(
+                top: 670,
+                left: 0,
+                right: 0,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: AppButtonStyles.defaultStyle,
+                      onPressed: () {},
+                      child: Text("Sign up"),
+                    ),
+                  ),
+                )),
+            Positioned(
+                top: 740,
+                left: 0,
+                right: 0,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: AppButtonStyles.lightStyle,
+                      onPressed: () {},
+                      child: Text("Log in"),
+                    ),
                   ),
                 ))
           ],
