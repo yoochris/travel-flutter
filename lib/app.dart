@@ -16,13 +16,15 @@ Future<Widget> getApp({bool mock = false, bool web = false}) async {
   // Wrap a StatelessWidget (ProviderApp) in a ChangeNotifierProvider to trigger rebuild of the
   // entire MaterialApp when app state, like locale, changes
   return ChangeNotifierProvider.value(
-      value: AppStateModel(
-          prefs: await SharedPreferences.getInstance(),
-          // analytics: analytics,
-          // messaging: FirebaseMessaging.instance,
-          mock: mock,
-          web: web),
-      child: ProviderApp());
+    value: AppStateModel(
+      prefs: await SharedPreferences.getInstance(),
+      // analytics: analytics,·
+      // messaging: FirebaseMessaging.instance,
+      mock: mock,
+      web: web,
+    ),
+    child: ProviderApp(),
+  );
 }
 
 class ProviderApp extends StatelessWidget {
