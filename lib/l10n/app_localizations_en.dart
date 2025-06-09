@@ -1,5 +1,3 @@
-// ignore: unused_import
-import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -69,8 +67,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get drawerRefreshTokensResultTitle => 'Tokens refreshed';
 
   @override
-  String get drawerRefreshTokensResultMsg =>
-      'See user details for the new tokens.';
+  String get drawerRefreshTokensResultMsg => 'See user details for the new tokens.';
 
   @override
   String get drawerGetUserInfo => 'Get user info';
@@ -115,6 +112,5 @@ class AppLocalizationsEn extends AppLocalizations {
   String get locationNotAvailableHeader => 'No access to location!';
 
   @override
-  String get locationNotAvailable =>
-      'Your application is not allowed to get location data from your device. Please go to app configurations and allow location information.';
+  String get locationNotAvailable => 'Your application is not allowed to get location data from your device. Please go to app configurations and allow location information.';
 }

@@ -10,7 +10,7 @@ class AppColors {
   static const Color secondaryBackground = Color(0xFF212529);
 
   // Accent colors
-  static const Color accent = Color(0xFF007BFF);
+  static const Color accent = Color(0xFF212529);
   static const Color accentLight = Color(0xFF6C757D);
 
   // Status colors

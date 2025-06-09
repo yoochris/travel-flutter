@@ -1,3 +1,4 @@
+import 'package:first_app/ui/pages/login/components/sign_in_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:first_app/models/appstate.dart';
 import 'package:provider/provider.dart';
@@ -43,19 +44,23 @@ class LoginPage extends StatelessWidget {
         padding: const EdgeInsets.only(left: 16, right: 16),
         child: Stack(
           children: [
-            Row(
-              spacing: 10,
-              children: List.generate(3, (i) {
-                return Expanded(
-                  child: AnimatedColumn(
-                    images: columns[i],
-                    maxOffset:
-                        30.0 + i * 10, // Optional: different offset per column
-                    duration:
-                        Duration(seconds: 2 + i), // Optional: different speed
-                  ),
-                );
-              }),
+            Positioned(
+              top: -50,
+              left: 0,
+              right: 0,
+              child: Row(
+                spacing: 10,
+                children: List.generate(3, (i) {
+                  return Expanded(
+                    child: AnimatedColumn(
+                      images: columns[i],
+                      maxOffset: 30.0, // Optional: different offset per column
+                      duration:
+                          Duration(seconds: 4 + i), // Optional: different speed
+                    ),
+                  );
+                }),
+              ),
             ),
             Positioned(
                 bottom: 0,
@@ -87,11 +92,12 @@ class LoginPage extends StatelessWidget {
                   ),
                 )),
             Positioned(
-              top: 540,
+              bottom: 280,
               left: 0,
               right: 0,
               child: FadeInUp(
-                duration: Duration(milliseconds: 1200),
+                duration: Duration(milliseconds: 500),
+                delay: Duration(milliseconds: 200),
                 child: Text(
                   "Welcome to ChrisTravel",
                   textAlign: TextAlign.center,
@@ -100,11 +106,12 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 580,
+              bottom: 250,
               left: 0,
               right: 0,
               child: FadeInUp(
-                  duration: Duration(milliseconds: 1200),
+                  duration: Duration(milliseconds: 500),
+                  delay: Duration(milliseconds: 400),
                   child: Text(
                     "Need a weekend recharge or a month-long expedition?",
                     textAlign: TextAlign.center,
@@ -112,11 +119,12 @@ class LoginPage extends StatelessWidget {
                   )),
             ),
             Positioned(
-              top: 620,
+              bottom: 226,
               left: 0,
               right: 0,
               child: FadeInUp(
-                  duration: Duration(milliseconds: 1200),
+                  duration: Duration(milliseconds: 500),
+                  delay: Duration(milliseconds: 600),
                   child: Text(
                     "The world missed you!",
                     textAlign: TextAlign.center,
@@ -124,35 +132,45 @@ class LoginPage extends StatelessWidget {
                   )),
             ),
             Positioned(
-                top: 670,
+                bottom: 140,
                 left: 0,
                 right: 0,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: AppButtonStyles.defaultStyle,
-                      onPressed: () {},
-                      child: Text("Sign up"),
-                    ),
-                  ),
+                child: FadeInUp(
+                  from: 800,
+                  duration: Duration(milliseconds: 800),
+                  delay: Duration(milliseconds: 800),
+                  child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: AppButtonStyles.defaultStyle,
+                          onPressed: () {},
+                          child: Text("Sign up"),
+                        ),
+                      )),
                 )),
             Positioned(
-                top: 740,
+                bottom: 70,
                 left: 0,
                 right: 0,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: AppButtonStyles.lightStyle,
-                      onPressed: () {},
-                      child: Text("Log in"),
-                    ),
-                  ),
-                ))
+                child: FadeInUp(
+                    from: 800,
+                    duration: Duration(milliseconds: 800),
+                    delay: Duration(milliseconds: 1000),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: AppButtonStyles.lightStyle,
+                          onPressed: () {
+                            showCustomDialog(context, onValue: (value) {});
+                          },
+                          child: Text("Sign in"),
+                        ),
+                      ),
+                    )))
           ],
         ),
       ),

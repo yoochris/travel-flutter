@@ -1,5 +1,3 @@
-// ignore: unused_import
-import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -69,8 +67,7 @@ class AppLocalizationsNb extends AppLocalizations {
   String get drawerRefreshTokensResultTitle => 'Tokens oppfrisket';
 
   @override
-  String get drawerRefreshTokensResultMsg =>
-      'Se bruker detaljer for oppdaterte token.';
+  String get drawerRefreshTokensResultMsg => 'Se bruker detaljer for oppdaterte token.';
 
   @override
   String get drawerGetUserInfo => 'Hent brukerinformasjon';
@@ -79,12 +76,10 @@ class AppLocalizationsNb extends AppLocalizations {
   String get drawerGetUserInfoResultTitle => 'Brukerinformasjon oppdatert';
 
   @override
-  String get drawerGetUserInfoResultMsg =>
-      'Brukerinformasjon har blitt oppdatert.';
+  String get drawerGetUserInfoResultMsg => 'Brukerinformasjon har blitt oppdatert.';
 
   @override
-  String get drawerGetUserInfoFailedTitle =>
-      'Henting av brukerinformasjon feilet';
+  String get drawerGetUserInfoFailedTitle => 'Henting av brukerinformasjon feilet';
 
   @override
   String get drawerGetUserInfoFailedMsg => 'Forsøk å oppfrisk tokens først!';
@@ -117,6 +112,5 @@ class AppLocalizationsNb extends AppLocalizations {
   String get locationNotAvailableHeader => 'Lokasjonsposisjon ikke tillatt!';
 
   @override
-  String get locationNotAvailable =>
-      'Applikasjonen får ikke tilgang til lokasjonsdata fra mobilen din. Gå til innstillinger for applikasjoner for å tillate lokasjon.';
+  String get locationNotAvailable => 'Applikasjonen får ikke tilgang til lokasjonsdata fra mobilen din. Gå til innstillinger for applikasjoner for å tillate lokasjon.';
 }
