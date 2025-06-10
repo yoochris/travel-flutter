@@ -80,8 +80,6 @@ final ThemeData appTheme = ThemeData(
     onSecondary: Colors.white,
     error: AppColors.error,
     onError: Colors.white,
-    background: AppColors.primaryBackground,
-    onBackground: AppColors.primaryText,
     surface: AppColors.primaryBackground,
     onSurface: AppColors.primaryText,
   ),

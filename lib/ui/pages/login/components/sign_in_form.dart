@@ -1,7 +1,8 @@
-import 'package:first_app/ui/pages/home/index.dart';
+import 'package:first_app/models/appstate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
 
 class SignInForm extends StatefulWidget {
@@ -40,6 +41,7 @@ class _SignInFormState extends State<SignInForm> {
 
   void singIn(BuildContext context) {
     // confetti.fire();
+    if (!mounted) return;
     setState(() {
       isShowConfetti = true;
       isShowLoading = true;
@@ -47,11 +49,13 @@ class _SignInFormState extends State<SignInForm> {
     Future.delayed(
       const Duration(seconds: 1),
       () {
+        if (!mounted) return;
         if (_formKey.currentState!.validate()) {
           success.fire();
           Future.delayed(
             const Duration(seconds: 2),
             () {
+              if (!mounted) return;
               setState(() {
                 isShowLoading = false;
               });
@@ -60,14 +64,16 @@ class _SignInFormState extends State<SignInForm> {
               Future.delayed(const Duration(seconds: 1), () {
                 // Navigator.pop(context);
                 if (!context.mounted) return;
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const HomePage();
-                    },
-                  ),
-                );
+                Provider.of<AppStateModel>(context, listen: false)
+                    .authorize('google');
+                Navigator.of(context).pop();
+                // Navigator.pushAndRemoveUntil(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const HomePage(),
+                //   ),
+                //   (route) => false, // This removes all previous routes
+                // );
               });
             },
           );
@@ -76,6 +82,7 @@ class _SignInFormState extends State<SignInForm> {
           Future.delayed(
             const Duration(seconds: 2),
             () {
+              if (!mounted) return;
               setState(() {
                 isShowLoading = false;
               });
@@ -107,13 +114,13 @@ class _SignInFormState extends State<SignInForm> {
                 child: TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "";
+                      return "Email is required";
                     }
                     return null;
                   },
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
-                  style: const TextStyle(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodyLarge,
                   decoration: InputDecoration(
                     prefixIcon: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -124,14 +131,28 @@ class _SignInFormState extends State<SignInForm> {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(
-                        color: Colors.black.withAlpha(30),
+                        color: Theme.of(context).primaryColor.withAlpha(30),
                         width: 1,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(
-                        color: Colors.black.withAlpha(100),
+                        color: Theme.of(context).primaryColor.withAlpha(100),
+                        width: 1.5,
+                      ),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(
+                        color: Colors.red.withAlpha(100),
+                        width: 1.5,
+                      ),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(
+                        color: Colors.red.withAlpha(100),
                         width: 1.5,
                       ),
                     ),
@@ -152,11 +173,11 @@ class _SignInFormState extends State<SignInForm> {
                   obscureText: true,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "";
+                      return "Password is required";
                     }
                     return null;
                   },
-                  style: const TextStyle(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodyLarge,
                   decoration: InputDecoration(
                     prefixIcon: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -167,14 +188,28 @@ class _SignInFormState extends State<SignInForm> {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(
-                        color: Colors.black.withAlpha(30),
+                        color: Theme.of(context).primaryColor.withAlpha(30),
                         width: 1,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(
-                        color: Colors.black.withAlpha(100),
+                        color: Theme.of(context).primaryColor.withAlpha(100),
+                        width: 1.5,
+                      ),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(
+                        color: Colors.red.withAlpha(100),
+                        width: 1.5,
+                      ),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(
+                        color: Colors.red.withAlpha(100),
                         width: 1.5,
                       ),
                     ),

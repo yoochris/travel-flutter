@@ -1,3 +1,4 @@
+import 'package:first_app/ui/pages/entryPoint/entry_point.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:first_app/l10n/app_localizations.dart';
@@ -51,7 +52,7 @@ class ProviderApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: context.watch<AppStateModel>().locale,
-      home: const HomePage(),
+      home: const EntryPoint(), // here is entry page
       theme: appTheme,
       routes: <String, WidgetBuilder>{
         "/HomePage": (BuildContext context) => const HomePage(),
