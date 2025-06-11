@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Primary colors
+  static const Color primary = Color(0xFF212529);
+  static const Color onPrimary = Colors.white;
+
+  static const Color primaryContainer = Color(0xFFf5f6f7);
+  static const Color onPrimaryContainer = Color(0xFF212529);
+
+  static const Color secondary = Color(0xFFf4f6f8);
+  static const Color onSecondary = Color(0xFF212529);
+
   static const Color primaryText = Color(0xFF212529);
   static const Color primaryBackground = Colors.white;
 
-  // Secondary colors
-  static const Color secondaryText = Colors.white;
-  static const Color secondaryBackground = Color(0xFF212529);
+  // card dialog background color
+  static const Color surface = Colors.white;
+  static const Color onSurface = Color(0xFF212529);
 
-  // Accent colors
-  static const Color accent = Color(0xFF212529);
-  static const Color accentLight = Color(0xFF6C757D);
-
-  // Status colors
   static const Color success = Color(0xFF28A745);
   static const Color warning = Color(0xFFFFC107);
   static const Color error = Color(0xFFDC3545);
@@ -26,8 +29,8 @@ class AppColors {
 class AppButtonStyles {
   // Default dark button style
   static ButtonStyle defaultStyle = ElevatedButton.styleFrom(
-    backgroundColor: AppColors.secondaryBackground,
-    foregroundColor: Colors.white,
+    backgroundColor: AppColors.primary,
+    foregroundColor: AppColors.onPrimary,
     shadowColor: Colors.transparent,
     padding: const EdgeInsets.symmetric(vertical: 16),
     textStyle: const TextStyle(
@@ -41,23 +44,8 @@ class AppButtonStyles {
 
   // Light variant
   static ButtonStyle lightStyle = ElevatedButton.styleFrom(
-    backgroundColor: Color(0xFFF5F6F7),
-    foregroundColor: AppColors.secondaryBackground,
-    shadowColor: Colors.transparent,
-    padding: const EdgeInsets.symmetric(vertical: 16),
-    textStyle: const TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w500,
-    ),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(40),
-    ),
-  );
-
-  // Accent variant
-  static ButtonStyle accentStyle = ElevatedButton.styleFrom(
-    backgroundColor: AppColors.accent,
-    foregroundColor: Colors.white,
+    backgroundColor: AppColors.secondary,
+    foregroundColor: AppColors.onSecondary,
     shadowColor: Colors.transparent,
     padding: const EdgeInsets.symmetric(vertical: 16),
     textStyle: const TextStyle(
@@ -74,14 +62,16 @@ final ThemeData appTheme = ThemeData(
   brightness: Brightness.light,
   colorScheme: ColorScheme(
     brightness: Brightness.light,
-    primary: AppColors.accent,
-    onPrimary: Colors.white,
-    secondary: AppColors.accentLight,
-    onSecondary: Colors.white,
+    primary: AppColors.primary,
+    onPrimary: AppColors.onPrimary,
+    secondary: AppColors.secondary,
+    onSecondary: AppColors.onPrimary,
+    primaryContainer: AppColors.primaryContainer,
+    onPrimaryContainer: AppColors.onPrimaryContainer,
     error: AppColors.error,
     onError: Colors.white,
-    surface: AppColors.primaryBackground,
-    onSurface: AppColors.primaryText,
+    surface: AppColors.surface,
+    onSurface: AppColors.onSurface,
   ),
   textTheme: TextTheme(
     displayLarge: TextStyle(

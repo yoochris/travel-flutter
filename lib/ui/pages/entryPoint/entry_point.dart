@@ -80,7 +80,7 @@ class _EntryPointState extends State<EntryPoint>
           decoration: isSideBarOpen
               ? BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/material/01.png'),
+                    image: AssetImage('assets/images/material/05.png'),
                     fit: BoxFit.fill,
                   ),
                 )
@@ -180,7 +180,9 @@ class _EntryPointState extends State<EntryPoint>
                   return BtmNavItem(
                     navBar: navBar,
                     press: () {
-                      RiveUtils.chnageSMIBoolState(navBar.rive.status!);
+                      if (navBar.rive.status != null) {
+                        RiveUtils.chnageSMIBoolState(navBar.rive.status!);
+                      }
                       updateSelectedBtmNav(navBar);
                     },
                     riveOnInit: (artboard) {

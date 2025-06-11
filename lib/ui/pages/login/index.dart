@@ -1,7 +1,5 @@
 import 'package:first_app/ui/pages/login/components/sign_in_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:first_app/models/appstate.dart';
-import 'package:provider/provider.dart';
 import 'package:first_app/ui/theme/style.dart';
 import 'package:animate_do/animate_do.dart';
 
@@ -10,7 +8,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var appState = Provider.of<AppStateModel>(context);
     List<String> pictures = [
       'assets/images/material/01.png',
       'assets/images/material/02.png',
