@@ -1,19 +1,20 @@
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:first_app/ui/pages/home/components/dargable_widget.dart';
 import 'package:flutter/material.dart';
 
 class CardContainer extends StatefulWidget {
-  final Function(BuildContext context, int index) itemBuilder;
+  final Function(BuildContext context, int index, bool isFrontCard) itemBuilder;
   final int iteamCount;
   final int index;
+  final bool isFrontCard;
 
   const CardContainer({
     super.key,
     required this.itemBuilder,
     required this.iteamCount,
     this.index = 0,
+    this.isFrontCard = false,
   });
 
   @override
@@ -118,7 +119,8 @@ class _CardContainerState extends State<CardContainer>
                   child: DargableWidget(
                     onSlideOut: onSlideOut,
                     isEnableDrag: stackIndex == 3,
-                    child: widget.itemBuilder(context, modeIndex),
+                    child:
+                        widget.itemBuilder(context, modeIndex, stackIndex == 3),
                   ),
                 ),
               ),

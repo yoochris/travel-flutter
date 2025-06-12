@@ -173,21 +173,10 @@ class _HomePageState extends State<HomePage> {
                       Center(
                         child: CardContainer(
                           iteamCount: TravelCard.fakeTravelCardList.length,
-                          itemBuilder: (context, index) => CardCoverImage(
-                            card: TravelCard.fakeTravelCardList[index],
-                          ),
-                        ),
-                      ),
-                      Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            ElevatedButton(
-                                onPressed: () {
-                                  appState.logOut();
-                                },
-                                child: Text("退出")),
-                          ],
+                          itemBuilder: (context, index, isFrontCard) =>
+                              CardCoverImage(
+                                  card: TravelCard.fakeTravelCardList[index],
+                                  isFrontCard: isFrontCard),
                         ),
                       ),
                     ],
