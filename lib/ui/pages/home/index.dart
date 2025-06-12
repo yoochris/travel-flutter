@@ -1,5 +1,7 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
+import 'package:first_app/models/travel_card.dart';
 import 'package:first_app/ui/pages/home/components/card_container.dart';
+import 'package:first_app/ui/pages/home/components/card_cover_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:first_app/models/appstate.dart';
@@ -44,12 +46,12 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.secondary,
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
             bottom: false,
             child: ChangeNotifierProvider(
                 create: (_) {},
-                child: SingleChildScrollView(
-                    child: Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                         length: _tabs.length,
                         child: Container(
                             padding: EdgeInsets.only(left: 10),
-                            height: 80,
+                            height: 60,
                             child: Column(
                               children: [
                                 ButtonsTabBar(
@@ -168,9 +170,13 @@ class _HomePageState extends State<HomePage> {
                               ],
                             )),
                       ),
-                      CardContainer(
-                        initialIndex: 0,
-                        enableEntryAnimation: true,
+                      Center(
+                        child: CardContainer(
+                          iteamCount: TravelCard.fakeTravelCardList.length,
+                          itemBuilder: (context, index) => CardCoverImage(
+                            card: TravelCard.fakeTravelCardList[index],
+                          ),
+                        ),
                       ),
                       Center(
                         child: Column(
@@ -186,6 +192,6 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                )))));
+                ))));
   }
 }

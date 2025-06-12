@@ -66,6 +66,7 @@ flutter:
 
   assets:
     - assets/images/material/
+    - assets/images/card/
     - assets/icons/
     - assets/RiveAssets/
   fonts:

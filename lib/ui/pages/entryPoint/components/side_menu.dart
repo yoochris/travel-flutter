@@ -19,9 +19,12 @@ class SideMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.only(left: 24),
-          child: Divider(color: Colors.white24, height: 1),
+        Padding(
+          padding: const EdgeInsets.only(left: 24),
+          child: Divider(
+            color: Theme.of(context).colorScheme.surface.withAlpha(50),
+            height: 1,
+          ),
         ),
         Stack(
           children: [
@@ -51,7 +54,7 @@ class SideMenu extends StatelessWidget {
               ),
               title: Text(
                 menu.title,
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Theme.of(context).colorScheme.surface),
               ),
             ),
           ],

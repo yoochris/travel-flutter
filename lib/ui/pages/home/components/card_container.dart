@@ -22,7 +22,8 @@ class CardContainer extends StatefulWidget {
 
 class _CardContainerState extends State<CardContainer>
     with SingleTickerProviderStateMixin {
-  final double defaultAngle18Dgree = pi * 0.1;
+  // final double defaultAngle18Dgree = pi * 0.1;
+  final double defaultAngle18Dgree = 0;
 
   late AnimationController controller;
   late int index;
@@ -31,9 +32,12 @@ class _CardContainerState extends State<CardContainer>
 
   Offset getOffser(int stackIndex) {
     return {
-          0: Offset(lerpDouble(0, -70, controller.value)!, 30),
-          1: Offset(lerpDouble(-70, -70, controller.value)!, 30),
-          2: Offset(70, 30) * (1 - controller.value),
+          // 0: Offset(lerpDouble(0, -70, controller.value)!, 30),
+          // 1: Offset(lerpDouble(-70, -70, controller.value)!, 30),
+          // 2: Offset(70, 30) * (1 - controller.value),
+          0: Offset(lerpDouble(0, -60, controller.value)!, 0),
+          1: Offset(lerpDouble(-60, -60, controller.value)!, 0),
+          2: Offset(60, 0) * (1 - controller.value),
         }[stackIndex] ??
         Offset(
             MediaQuery.of(context).size.width *
@@ -54,9 +58,12 @@ class _CardContainerState extends State<CardContainer>
   // We are almost made it, it feels so good to slide
   double getScal(int stackIndex) =>
       {
-        0: lerpDouble(0.6, 0.9, controller.value),
-        1: lerpDouble(0.9, 0.95, controller.value),
-        2: lerpDouble(0.95, 1, controller.value),
+        // 0: lerpDouble(0.6, 0.9, controller.value),
+        // 1: lerpDouble(0.9, 0.95, controller.value),
+        // 2: lerpDouble(0.95, 1, controller.value),
+        0: lerpDouble(0.4, 0.8, controller.value),
+        1: lerpDouble(0.8, 1, controller.value),
+        2: lerpDouble(0.8, 1, controller.value),
       }[stackIndex] ??
       1.0;
 
