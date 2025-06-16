@@ -1,9 +1,22 @@
 import 'package:first_app/models/travel_card.dart';
 import 'package:flutter/material.dart';
+import 'package:sheet/sheet.dart';
 
-class CardDetail extends StatelessWidget {
+class CardDetail extends StatefulWidget {
   final TravelCard card;
   const CardDetail({super.key, required this.card});
+
+  @override
+  State<CardDetail> createState() => _CardDetailState();
+}
+
+class _CardDetailState extends State<CardDetail> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  SheetController sheetController = SheetController();
 
   void _onVerticalDrag(
     DragUpdateDetails details,
@@ -17,84 +30,63 @@ class CardDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      children: [
-        ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            GestureDetector(
-              onVerticalDragUpdate: (details) =>
-                  _onVerticalDrag(details, context),
-              child: Hero(
-                tag: card.title,
-                child: Image.asset(
-                  height: 300,
-                  card.image,
-                  fit: BoxFit.cover,
+        body: SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: Stack(
+              children: [
+                GestureDetector(
+                  onVerticalDragUpdate: (details) =>
+                      _onVerticalDrag(details, context),
+                  child: Hero(
+                    tag: widget.card.title,
+                    child: Image.asset(
+                      width: double.infinity,
+                      height: 300,
+                      widget.card.image,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
-              ),
-              child: Column(
-                children: [
-                  ...List.generate((20), (index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage: AssetImage(card.image),
-                          radius: 15,
+                Positioned(
+                    child: Container(
+                  height: 40,
+                  color: Colors.red,
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        margin: EdgeInsets.symmetric(horizontal: 16),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                          borderRadius: BorderRadius.circular(40),
                         ),
-                        title: Text(card.title),
-                        subtitle: Text(
-                            'Come to the Dart Side :) ..... $index\nline 22222 \nline 33'),
+                        child: Icon(
+                          Icons.arrow_back_ios_new_outlined,
+                        ),
                       ),
-                    );
-                  })
-                ],
-              ),
-            )
-          ],
-        ),
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          child: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            leading: Container(
-              padding: EdgeInsets.all(8),
-              child: DecoratedBox(
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                      borderRadius: BorderRadius.all(Radius.circular(40))),
-                  child: Icon(
-                    Icons.arrow_back_ios_new_outlined,
-                  )),
-            ),
-            actions: [
-              Container(
-                padding: EdgeInsets.all(8),
-                margin: EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                  borderRadius: BorderRadius.circular(40),
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        margin: EdgeInsets.symmetric(horizontal: 16),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        child: Icon(
+                          Icons.favorite_border_outlined,
+                        ),
+                      )
+                    ],
+                  ),
+                )),
+                Sheet(
+                  controller: sheetController,
+                  initialExtent: MediaQuery.of(context).size.height - 300,
+                  minExtent: MediaQuery.of(context).size.height - 600,
+                  maxExtent: MediaQuery.of(context).size.height - 100,
+                  child: Container(color: Colors.blue[100]),
                 ),
-                child: Icon(
-                  Icons.favorite_border_outlined,
-                ),
-              )
-            ],
-          ),
-        ),
-      ],
-    ));
+              ],
+            )));
   }
 }
