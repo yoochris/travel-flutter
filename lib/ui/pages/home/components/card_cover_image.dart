@@ -208,7 +208,7 @@ class _CardCoverImageState extends State<CardCoverImage>
                                                             Radius.circular(
                                                                 50)),
                                                     border: BoxBorder.all(
-                                                      width: 1,
+                                                      width: 0,
                                                       color: Colors.white
                                                           .withAlpha(255),
                                                     )),
