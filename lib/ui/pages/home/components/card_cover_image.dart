@@ -42,7 +42,7 @@ class _CardCoverImageState extends State<CardCoverImage>
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 350,
+      width: 330,
       height: widget.height,
       child: AspectRatio(
           aspectRatio: .80,
@@ -201,18 +201,22 @@ class _CardCoverImageState extends State<CardCoverImage>
                                                 padding: EdgeInsets.symmetric(
                                                     horizontal: 4, vertical: 4),
                                                 decoration: BoxDecoration(
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .primary,
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(50)),
-                                                ),
+                                                    color: Colors.black87
+                                                        .withAlpha(50),
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                50)),
+                                                    border: BoxBorder.all(
+                                                      width: 1,
+                                                      color: Colors.white
+                                                          .withAlpha(255),
+                                                    )),
                                                 clipBehavior: Clip.hardEdge,
                                                 child: BackdropFilter(
                                                     filter: ImageFilter.blur(
                                                       sigmaX: 5,
-                                                      sigmaY: 50,
+                                                      sigmaY: 5,
                                                     ),
                                                     child: Stack(
                                                       children: [

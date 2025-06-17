@@ -37,8 +37,8 @@ class _CardContainerState extends State<CardContainer>
           // 1: Offset(lerpDouble(-70, -70, controller.value)!, 30),
           // 2: Offset(70, 30) * (1 - controller.value),
           0: Offset(lerpDouble(0, -60, controller.value)!, 0),
-          1: Offset(lerpDouble(-60, -60, controller.value)!, 0),
-          2: Offset(60, 0) * (1 - controller.value),
+          1: Offset(lerpDouble(-50, -60, controller.value)!, 0),
+          2: Offset(50, 0) * (1 - controller.value),
         }[stackIndex] ??
         Offset(
             MediaQuery.of(context).size.width *
